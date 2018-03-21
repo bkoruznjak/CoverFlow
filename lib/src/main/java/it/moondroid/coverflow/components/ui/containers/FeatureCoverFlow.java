@@ -1056,6 +1056,15 @@ public class FeatureCoverFlow extends EndlessLoopAdapterContainer implements Vie
         final float xf = ev.getX();
         final float yf = ev.getY();
         final RectF frame = mTouchRect;
+		
+        switch (action){
+            case MotionEvent.ACTION_DOWN:
+                getParent().requestDisallowInterceptTouchEvent(true);
+                break;
+            case MotionEvent.ACTION_UP:
+                getParent().requestDisallowInterceptTouchEvent(false);
+                break;
+        }
                 
         if (action == MotionEvent.ACTION_DOWN) {
             if (mMotionTarget != null) {
