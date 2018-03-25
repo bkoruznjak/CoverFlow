@@ -1,5 +1,17 @@
 package it.moondroid.coverflow.components.general;
 
+import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.PointF;
+import android.util.Log;
+import android.util.TypedValue;
+import android.view.View;
+
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Array;
 import java.nio.ByteBuffer;
@@ -13,19 +25,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
-
-import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.PointF;
-import android.util.FloatMath;
-import android.util.Log;
-import android.util.TypedValue;
-import android.view.View;
 
 
 /**
@@ -47,7 +46,7 @@ public abstract class ToolBox {
 	public static float getLineLength(PointF a,PointF b){
 		float vx = b.x - a.x;
 		float vy = b.y - a.y;
-		return FloatMath.sqrt(vx*vx + vy*vy);
+		return (float) Math.sqrt(vx*vx + vy*vy);
 	}
 	/**
 	 * Get length of line between points A and B.
@@ -60,7 +59,7 @@ public abstract class ToolBox {
 	public static float getLineLength(float ax,float ay, float bx,float by){
 		float vx = bx - ax;
 		float vy = by - ay;
-		return FloatMath.sqrt(vx*vx + vy*vy);
+		return (float) Math.sqrt(vx*vx + vy*vy);
 	}
 	
 	/**
@@ -70,11 +69,11 @@ public abstract class ToolBox {
 	 * @return length
 	 */
 	public static float getVectorLength(float vx,float vy){
-		return FloatMath.sqrt(vx*vx + vy*vy);
+		return (float) Math.sqrt(vx*vx + vy*vy);
 	}
 	
 	public static float getVectorLength(PointF v){
-		return FloatMath.sqrt(v.x*v.x + v.y*v.y);
+		return (float) Math.sqrt(v.x*v.x + v.y*v.y);
 	}
 	
 	/**
@@ -234,7 +233,7 @@ public abstract class ToolBox {
     	final float dx = x2;
     	final float dy = y2;
     	
-    	final float dr = FloatMath.sqrt(dx*dx + dy*dy);
+    	final float dr = (float) Math.sqrt(dx*dx + dy*dy);
     	
     	final PointF res1 = new PointF();
     	final PointF res2 = new PointF();
@@ -535,7 +534,7 @@ public abstract class ToolBox {
     public static byte[] MACtobyteConverter(String MAC) {
     	// first remove all ":" from MAC address
     	MAC = MAC.replaceAll(":", "");
-    	Log.d("ComponentLibrary.ToolBox", "MACtobyteConverter input ="+MAC);
+    	Log.d("ToolBox", "MACtobyteConverter input ="+MAC);
     	
     	// now convert to byte array
 	    int len = MAC.length();
@@ -549,7 +548,7 @@ public abstract class ToolBox {
     
     /**
      * Transforms MAC address in 00:11:22:33:44:55 format to byte array representation
-     * @param MAC
+     * @param IMEI
      * @return
      */
     public static byte[] IMEItobyteConverter(String IMEI) {
