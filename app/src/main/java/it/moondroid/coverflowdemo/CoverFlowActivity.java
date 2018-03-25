@@ -1,7 +1,7 @@
 package it.moondroid.coverflowdemo;
 
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import it.moondroid.coverflow.components.ui.containers.FeatureCoverFlow;
 
 
-public class CoverFlowActivity extends ActionBarActivity {
+public class CoverFlowActivity extends AppCompatActivity {
 
     private FeatureCoverFlow mCoverFlow;
     private CoverFlowAdapter mAdapter;
